@@ -7,9 +7,6 @@ wstring tetro[7];
 
 
 
-
-
-
 int main()
 {
 // Create assets

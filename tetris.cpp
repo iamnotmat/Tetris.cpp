@@ -1,49 +1,80 @@
 #include <iostream>
 using namespace std;
 
-wstring tetro[7];
+typedef char tetromin[5][5];
 
-
-
-
-
-int main()
+void tetrominiDec()
 {
-// Create assets
-tetro[0].append(L"..X.");
-tetro[0].append(L"..X.");
-tetro[0].append(L"..X.");
-tetro[0].append(L"..X.");
-
-tetro[1].append(L"....");
-tetro[1].append(L"..X.");
-tetro[1].append(L".XX.");
-tetro[1].append(L"..X.");
-
-tetro[2].append(L"..X.");
-tetro[2].append(L".XX.");
-tetro[2].append(L".X..");
-tetro[2].append(L"....");
-
-tetro[3].append(L".X..");
-tetro[3].append(L".XX.");
-tetro[3].append(L"..X.");
-tetro[3].append(L"....");
-
-tetro[4].append(L"....");
-tetro[4].append(L".XX.");
-tetro[4].append(L".XX.");
-tetro[4].append(L"....");
-
-tetro[5].append(L".XX.");
-tetro[5].append(L"..X.");
-tetro[5].append(L"..X.");
-tetro[5].append(L"....");
-
-tetro[6].append(L".XX.");
-tetro[6].append(L".X..");
-tetro[6].append(L".X..");
-tetro[6].append(L"....");
-
-
+// Tetromini
+tetromin Tet1 = {
+{0,0,0,0,0},
+{0,0,0,1,0},
+{0,0,2,1,0},
+{0,0,1,0,0},
+{0,0,0,0,0}
+};
+tetromin Tet2 = {
+{0,0,0,0,0},
+{0,0,1,0,0},
+{0,1,2,0,0},
+{0,0,1,0,0},
+{0,0,0,0,0}
+};
+tetromin Tet3 = {
+{0,0,0,0,0},
+{0,1,0,0,0},
+{0,1,2,0,0},
+{0,0,1,0,0},
+{0,0,0,0,0}
+};
+tetromin Tet4 = {
+{0,0,0,0,0},
+{0,0,1,0,0},
+{0,0,2,0,0},
+{0,0,1,0,0},
+{0,0,1,0,0}
+};
+tetromin Tet5 = {
+{0,0,0,0,0},
+{0,0,1,0,0},
+{0,0,2,0,0},
+{0,0,1,1,0},
+{0,0,0,0,0}
+};
+tetromin Tet6 = {
+{0,0,0,0,0},
+{0,0,1,0,0},
+{0,0,2,0,0},
+{0,1,1,0,0},
+{0,0,0,0,0}
+};
+tetromin Tet7 = {
+{0,0,0,0,0},
+{0,0,0,0,0},
+{0,0,2,1,0},
+{0,0,1,1,0},
+{0,0,0,0,0}
+};
 }
+
+char *Rotate(char Tet[5][5])
+{
+char (*tetro)[5] = new char[5][5];
+
+for (int x=0; x<5; x++){
+    for (int y=0; y<5; y++){
+        tetro[y][x] = Tet[4-x][y];
+    }
+}
+
+for (int x=0; x<5; x++){
+    for (int y=0; y<5; y++){
+        Tet[x][y] = tetro[x][y];
+    }
+}
+
+return reinterpret_cast<char *>(Tet);
+}
+
+
+
